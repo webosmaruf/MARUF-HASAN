@@ -1,0 +1,654 @@
+:root {
+    /* ফন্ট হিসেবে 'Inter' ব্যবহার করা হলো */
+    --font-primary: 'Inter', sans-serif;
+    /* গভীর নীল রঙের প্যালেট */
+    --color-primary: #1A73E8; /* Deep Blue */
+    --color-secondary: #00A693; /* Accent Teal */
+    --color-text: #333333; /* Dark Gray for text */
+    --color-bg-light: #F8F9FA; /* Light Background */
+    --color-bg-white: #FFFFFF;
+    --color-border: #E0E0E0;
+}
+
+/* বেসিক রিসেট */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-primary);
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: var(--color-bg-light);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* --- ২.শিরোনাম এবং অনুচ্ছেদ --- */
+h1 {
+    font-weight: 700;
+    font-size: 2.5rem;
+    color: var(--color-primary);
+    margin-bottom: 0.5em;
+}
+
+h2 {
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: var(--color-primary);
+    margin-bottom: 0.5em;
+}
+
+p {
+    margin-bottom: 1em;
+}
+
+h3 {
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 0.5em;
+    font-size: 1.5rem; 
+    text-align: center;
+    margin-bottom: 2em;
+    position: relative;
+}
+
+
+/* শিরোনামের নিচে একটি ইউনিক আন্ডারলাইন */
+h3::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--color-secondary);
+    margin: 8px auto 0;
+    border-radius: 2px;
+}
+
+
+/* --- ৩. সেকশন স্টাইলস ও লেআউট --- */
+section {
+    padding: 60px 20px;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+/* -----------------------------------
+   HERO SECTION
+----------------------------------- */
+header {
+    background: linear-gradient(135deg, #1A73E8, #004d99);
+    color: white;
+    padding: 80px 20px;
+}
+
+/* FLEX LAYOUT */
+.hero-container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    min-height: 70vh;
+}
+
+/* IMAGE AREA (with glow) */
+.hero-image-area {
+    position: relative;
+}
+
+.hero-image-area::before {
+    content: "";
+    position: absolute;
+    inset: -25px;
+    background: radial-gradient(circle, rgba(255,255,255,0.35), transparent);
+    filter: blur(60px);
+    z-index: 0;
+    border-radius: 50%;
+}
+
+/* PROFILE PHOTO */
+.profile-photo {
+    width: 450px;
+    height: 450px;
+    object-fit: cover;
+    position: relative;
+    z-index: 2;
+    transition: .3s;
+}
+
+.profile-photo:hover {
+    transform: scale(1.05) rotateX(5deg) rotateY(5deg);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+/* TEXT AREA */
+.hero-text-content {
+    flex: 1;
+    max-width: 55%;
+}
+
+.hero-title {
+    color: white;
+    font-size: 3.4rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    position: relative;
+    display: inline-block;
+}
+
+/* Animated Underline */
+.hero-title::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 4px;
+    left: 0;
+    bottom: -8px;
+    background: #00e0b6;
+    transition: 0.5s;
+}
+
+.hero-title:hover::after {
+    width: 100%;
+}
+
+header h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: rgba(255,255,255,0.85);
+}
+
+/* BUTTON */
+.button-primary {
+    background: var(--color-secondary);
+    color: white;
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 15px;
+    font-weight: 600;
+    transition: .3s;
+}
+
+.button-primary:hover {
+    background: #008a78;
+}
+
+
+
+/* -----------------------------------
+   RESPONSIVE DESIGN
+----------------------------------- */
+@media(max-width: 900px){
+    .hero-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .profile-photo {
+        width: 220px;
+        height: 220px;
+    }
+
+    .hero-text-content {
+        max-width: 100%;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+}
+
+
+
+
+
+/* --- ৫. বাটন স্টাইলস --- */
+.button-primary {
+    display: inline-block;
+    background-color: var(--color-secondary);
+    color: var(--color-bg-white);
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 50px; /* পিল আকারের বাটন */
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-top: 20px;
+    border: 2px solid var(--color-secondary);
+}
+
+.button-primary:hover {
+    background-color: #2da82d; /* Darker Teal on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+/* মাঝের সেকশনগুলির জন্য আলাদা ব্যাকগ্রাউন্ড কালার */
+#about {
+    background-color: var(--color-bg-white);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-bottom: 40px;
+}
+
+
+/* --- SKILLS --- */
+#skills h4 {
+    text-align: center;
+    color: var(--color-primary);
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+}
+
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 0 20px;
+}
+
+.skills-list span {
+    background-color: var(--color-bg-white);
+    border: 1px solid var(--color-border);
+    color: var(--color-primary);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.skills-list span:hover {
+    background-color: var(--color-primary);
+    color: var(--color-bg-white);
+    cursor: default;
+}
+
+/* --- ৭. প্রোজেক্টস সেকশন (PROJECTS) --- */
+.project-card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 0 20px;
+}
+
+.project-card {
+    background-color: var(--color-bg-white);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    border-left: 5px solid var(--color-secondary); /* Unique touch */
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.project-card h4 {
+    font-size: 1.25rem;
+    margin-top: 0;
+    color: var(--color-text);
+}
+
+.project-card a {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* --- ৮. যোগাযোগ সেকশন (CONTACT) --- */
+
+#contact {
+    background-color: var(--color-bg-white);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-bottom: 40px;
+}
+
+.contact-links a {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 500;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+.contact-links a:hover {
+    color: var(--color-secondary);
+}
+#contact p {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.contact-links {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+/* --- FOOTER --- */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: #bbb;
+    font-size: 0.9rem;
+    margin-top: 30px;
+}
+
+/* --- ১০. মোবাইল রেসপনসিভনেস (৬০০ পিক্সেলের নিচের স্ক্রিনের জন্য) --- */
+@media (max-width: 600px) {
+    header {
+        padding: 80px 15px 60px;
+    }
+    header h1 {
+        font-size: 2.5rem;
+    }
+    header h2 {
+        font-size: 1.2rem;
+    }
+    section {
+        padding: 40px 15px;
+    }
+    .project-card-container {
+        padding: 0;
+    }
+}
+
+
+
+
+
+
+
+/* Contact page section */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #f5f7fa;
+}
+
+.contact-section {
+    padding: 60px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-container {
+    width: 90%;
+    max-width: 1100px;
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    display: flex;
+    gap: 40px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.contact-info {
+    flex: 1;
+}
+
+.contact-info h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.contact-info p {
+    margin-bottom: 15px;
+    color: #444;
+}
+
+.info-box p {
+    margin-bottom: 8px;
+}
+
+.social-links a {
+    margin-right: 15px;
+    color: #0077ff;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.contact-form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 16px;
+}
+
+.contact-form textarea {
+    height: 140px;
+    resize: none;
+}
+
+.contact-form button {
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: #0077ff;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.contact-form button:hover {
+    background: #005fcc;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .contact-container {
+        flex-direction: column;
+    }
+}
+
+/* Contact page section END */
+
+
+
+
+
+/* PROJECT SECTION */
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Poppins, sans-serif;
+}
+
+body {
+    background: #f5f7fa;
+}
+
+.projects-section {
+    padding: 60px 5%;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.section-subtitle {
+    color: #555;
+    margin-bottom: 40px;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.project-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: left;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-6px);
+}
+
+.project-card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.project-card h3 {
+    margin-bottom: 8px;
+}
+
+.project-card p {
+    color: #444;
+    margin-bottom: 15px;
+}
+
+.tech span {
+    background: #0077ff;
+    color: white;
+    padding: 4px 10px;
+    margin-right: 5px;
+    border-radius: 6px;
+    font-size: 13px;
+}
+
+.project-links {
+    margin-top: 15px;
+}
+
+.btn {
+    display: inline-block;
+    background: #0077ff;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-right: 8px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #005fcc;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid #0077ff;
+    color: #0077ff;
+}
+
+.btn-outline:hover {
+    background: #0077ff;
+    color: white;
+}
+
+
+/* PROJECT SECTION END */
+
+
+
+/* SERVICE SECTION */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: #f4f6f9;
+}
+
+.services-section {
+    padding: 60px 5%;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 40px;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.service-card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: 0.3s;
+    border-left: 5px solid #0077ff;
+}
+
+.service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+.service-card h3 {
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: #0077ff;
+}
+
+.service-card p {
+    color: #444;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+/* Responsive */
+@media(max-width: 600px){
+    .section-title {
+        font-size: 28px;
+    }
+}
+
+
+/* SERVICE SECTION END */
